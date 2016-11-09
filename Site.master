@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -50,14 +50,20 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Ingresos</a></li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" runat="server" href="~/Contact">Ingresos <span class="caret"></span>
+                                             </a>
+                            <ul class="dropdown-menu">
+                                <li role="presentation"><a role="menuitem" runat="server" href="~/Facturas">Facturas</a></li>
+                                <li role="presentation"><a role="menuitem" runat="server" href="~/">Cheques</a></li>
+                            </ul>
+                        </li>
                         <li><a runat="server" href="~/About">Gastos</a></li>
                         <li><a runat="server" href="~/Contact">Calendario</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" runat="server" href="~/Contact">Cuenta <span class="caret"></span>
                                              </a>
                               <ul class="dropdown-menu">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cliente</a></li>
-                                <li><a runat="server" href="ClsProveedor">Proveedor</a></li>
+                                <li><a runat="server" href="Proveedor">Proveedor</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#">Producto/Servicios</a></li>
                                 <li><a href="#">Cuenta Bancaria</a></li>
