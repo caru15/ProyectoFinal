@@ -21,15 +21,17 @@ namespace proyFinal
 		private String tipo;
 		private float monto;
 		private DateTime fecha;
+        private int IdFactura;
 		
 		//CONSTRUCTOR
 		
-		public clsNota(int id, String tip, float mon, DateTime fec)
+		public clsNota(int id, String tip, float mon, DateTime fec,int If)
 		{
 			this.IdNota=id;
 			this.Tipo=tip;
 			this.Monto=mon;
 			this.Fecha=fec;
+            IdFactura = If;
 		}
 		
 		//PROPERTIES
@@ -53,6 +55,12 @@ namespace proyFinal
 			set{this.fecha=value;}
 			get{return this.fecha;}
 		}
+
+        public int IdFactu
+        {
+            get { return IdFactura; }
+            set { IdFactura = value; }
+        }
 		
 	}
 }

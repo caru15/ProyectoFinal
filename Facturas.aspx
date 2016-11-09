@@ -15,10 +15,23 @@
             <div class="col-md-10">
                 <select class="form-control" name="size">
                     <option value="value">1</option>
+                     <option value="value">2</option>
+                     <option value="value">3</option>
+                     <option value="value">4</option>
                 </select>
                 <!--<asp:TextBox runat="server" ID="Prov" CssClass="form-control" />-->
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Prov"
                     CssClass="text-danger" ErrorMessage="Se requiere el nombre de proveedor." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="Prov" CssClass="col-md-2 control-label">Tipo de Factura</asp:Label>
+            <div class="col-md-10">
+                <select class="form-control" name="size">
+                    <option value="value">Tercero</option>
+                    <option value="value">Propias</option>
+                </select>
+                
             </div>
         </div>   
         <div class="form-group">
@@ -29,17 +42,7 @@
                     CssClass="text-danger" ErrorMessage="Se requiere el número de cuenta" />
             </div>
         </div>   
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Prov" CssClass="col-md-2 control-label">Tipo de Factura</asp:Label>
-            <div class="col-md-10">
-                <select class="form-control" name="size">
-                    <option value="value">1</option>
-                </select>
-                
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Prov"
-                    CssClass="text-danger" ErrorMessage="Se requiere el nombre de proveedor." />
-            </div>
-        </div>  
+          
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Dom" CssClass="col-md-2 control-label">Fecha Emisión</asp:Label>
             <div class="col-md-10">
@@ -74,7 +77,7 @@
         </div> 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server"  Text="Register" CssClass="btn btn-small btn-success" />
+                <asp:Button runat="server"  Text="Registrar" CssClass="btn btn-small btn-success" />
             </div>
         </div>
     </div>

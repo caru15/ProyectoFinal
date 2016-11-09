@@ -44,7 +44,7 @@
         </div> 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server" OnClick="CreateProveedor_Click" Text="Register" CssClass="btn btn-small btn-success" />
+                <asp:Button runat="server" OnClick="CreateProveedor_Click" Text="Registrar" CssClass="btn btn-small btn-success" />
             </div>
         </div>
     </div>

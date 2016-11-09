@@ -21,17 +21,17 @@ namespace proyFinal
 		private int idFactura;
 		private DateTime fechaEmision;
     	private DateTime fechaCobro;
-		public String[] tipo;
+		public String tipo;
 		private String modo;
 		
 		//CONSTRUCTOR
 		
-		public clsFactura(int idFact, DateTime fEmision, DateTime fCobro, String mod)
+		public clsFactura(int idFact, DateTime fEmision, DateTime fCobro, String mod,string ti)
 		{
 			this.IdFactura = idFact;
 			this.FechaCobro = fCobro;
 			this.FechaEmision = fEmision;
-			this.tipo = new string[50];
+			this.tipo =ti ;
 		}
 		
 		//PROPERTIES
