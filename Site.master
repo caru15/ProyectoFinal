@@ -55,6 +55,7 @@
                             <ul class="dropdown-menu">
                                 <li role="presentation"><a role="menuitem" runat="server" href="~/Facturas">Facturas</a></li>
                                 <li role="presentation"><a role="menuitem" runat="server" href="~/">Cheques</a></li>
+                                 <li role="presentation"><a role="menuitem" runat="server" href="~/Notas">Nota de Debito/Credito</a></li>
                             </ul>
                         </li>
                         <li><a runat="server" href="~/About">Gastos</a></li>
