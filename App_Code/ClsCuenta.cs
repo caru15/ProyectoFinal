@@ -6,31 +6,23 @@ using System.Web;
 public class ClsCuenta
 {
     private double FondoDolares;
-    private int IdCuenta;
     private double FondoPesos;
     private double DepBancario;
     private double ChequesCobrados;
     private double ChequesDebitados;
-    private DateTime FechaAlta;
 
-    public ClsCuenta()
-    {    }
 
-    public ClsCuenta(int IC,double FD,double FP, double DB, double CC, double CD,DateTime FA)
+    public ClsCuenta() { }
+
+    public ClsCuenta(double FD,double FP, double DB, double CC, double CD)
     {
-        this.IdCuenta = IC;
         this.FondoDolares = FD;
         this.FondoPesos = FP;
         this.DepBancario = DB;
         this.ChequesCobrados = CC;
         this.ChequesDebitados = CD;
-        this.FechaAlta = FA; 
     }
-    public int SGIdCuenta
-    {
-        set { IdCuenta = value; }
-        get { return IdCuenta; }
-    }
+  
         
     public double SGFondosDolares
     {
@@ -58,11 +50,8 @@ public class ClsCuenta
         get { return ChequesDebitados; }
         set { ChequesDebitados = value; }
     }
-    public DateTime SGFechaAlta
-    {
-        get { return FechaAlta; }
-        set { FechaAlta = value; }
-    }
+   
+    
     public int TamCuenta {
-    get { return 32 + (5 * 64); } }
+    get { return  (5 * 16); } }
 }

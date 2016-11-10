@@ -1,27 +1,29 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: Juan Morales
- * Date: 3/11/2016
- * Time: 10:40 p. m.
+ * User: JORGE
+ * Date: 9/11/2016
+ * Time: 1:37 p. m.
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
 
-namespace proyFinal
+namespace ProyectoFinal
 {
-	/// <summary>
-	/// Description of clsCheque.
-	/// </summary>
 	public class clsCheque
 	{
 		
 		private int idCheque;
-		private DateTime fechaEmision;
+		//private DateTime fechaEmision;
+		private String fechaEmision;
 		private double monto;
 		private String moneda;
 		
-		public clsCheque(int id, DateTime fEmision, double mont, String mone)
+		public clsCheque()
+		{
+		}
+		
+		public clsCheque(int id, String fEmision, double mont, String mone)
 		{
 			this.IdCheque=id;
 			this.FechaEmision=fEmision;
@@ -34,7 +36,7 @@ namespace proyFinal
 			get{return this.idCheque;}
 		}
 		
-		public DateTime FechaEmision{
+		public String FechaEmision{
 			set{this.fechaEmision=value;}
 			get{return this.fechaEmision;}
 		}
@@ -48,5 +50,12 @@ namespace proyFinal
 			set{this.moneda=value;}
 			get{return this.moneda;}
 		}
+		
+		public int Tamaño //tamaño del registro Persona
+  		{
+    		// Longitud en bytes de los atributos (un long = 8 bytes)
+    		get { return 4 + FechaEmision.Length*2 + 16 + Moneda.Length*2 ; }
+  		}
+  		
 	}
 }

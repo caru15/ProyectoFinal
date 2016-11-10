@@ -1,18 +1,15 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: Juan Morales
- * Date: 3/11/2016
- * Time: 10:41 p. m.
+ * User: JORGE
+ * Date: 9/11/2016
+ * Time: 1:36 p. m.
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
 
-namespace proyFinal
+namespace ProyectoFinal
 {
-	/// <summary>
-	/// Description of clsCliente.
-	/// </summary>
 	public class clsCliente
 	{
 		
@@ -23,6 +20,18 @@ namespace proyFinal
 		private long telefono;
 		private String cuenta;
 		private String email;
+		
+		public clsCliente()
+		{
+			this.Nombre="nn";
+			this.Apellido="nn";
+			this.Dni=0;
+			this.Domicilio="nn";
+			this.Telefono=0;
+			this.Cuenta="nn";
+			this.Email="nn";
+		}
+		
 		
 		public clsCliente(String nom, String ape, long doc, String dom, long tel, String cuen, String mail)
 		{
@@ -68,8 +77,13 @@ namespace proyFinal
 		public String Email{
 			set{this.email=value;}
 			get{return this.email;}
-		}
+		}		
 		
+		public int Tamaño //tamaño del registro Persona
+  		{
+    		// Longitud en bytes de los atributos (un long = 8 bytes)
+    		get { return Nombre.Length*2 + Apellido.Length*2 + 8 + Domicilio.Length*2 + 8 + Cuenta.Length*2 + Email.Length*2 ; }
+  		}
 		
 	}
 }
