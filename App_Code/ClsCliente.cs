@@ -8,7 +8,11 @@
  */
 using System;
 
+<<<<<<< HEAD:App_Code/ClsCliente.cs
 namespace ProyectoFinal
+=======
+namespace Facturas_TPFinal_C
+>>>>>>> origin/master:Clases/ClsCliente.cs
 {
 	public class clsCliente
 	{
@@ -23,6 +27,7 @@ namespace ProyectoFinal
 		
 		public clsCliente()
 		{
+<<<<<<< HEAD:App_Code/ClsCliente.cs
 			this.Nombre="nn";
 			this.Apellido="nn";
 			this.Dni=0;
@@ -30,6 +35,15 @@ namespace ProyectoFinal
 			this.Telefono=0;
 			this.Cuenta="nn";
 			this.Email="nn";
+=======
+			this.Nombre=nn;
+			this.Apellido=nn;
+			this.Dni=0;
+			this.Domicilio=nn;
+			this.Telefono=0;
+			this.Cuenta=nn;
+			this.Email=nn;
+>>>>>>> origin/master:Clases/ClsCliente.cs
 		}
 		
 		
@@ -79,11 +93,21 @@ namespace ProyectoFinal
 			get{return this.email;}
 		}		
 		
+<<<<<<< HEAD:App_Code/ClsCliente.cs
 		public int Tamaño //tamaño del registro Persona
   		{
     		// Longitud en bytes de los atributos (un long = 8 bytes)
     		get { return Nombre.Length*2 + Apellido.Length*2 + 8 + Domicilio.Length*2 + 8 + Cuenta.Length*2 + Email.Length*2 ; }
   		}
 		
+=======
+		/*
+		public int Tamaño //tamaño del registro Persona
+  		{
+    		// Longitud en bytes de los atributos (un long = 8 bytes)
+    		get { return 4 + FechaEmision.Length*2 + FechaCobro.Length*2 + Tipo.Length*2 + Modo.Length*2 ; }
+  		}
+  		*/
+>>>>>>> origin/master:Clases/ClsCliente.cs
 	}
 }

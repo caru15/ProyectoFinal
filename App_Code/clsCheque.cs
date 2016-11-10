@@ -8,7 +8,11 @@
  */
 using System;
 
+<<<<<<< HEAD:App_Code/clsCheque.cs
 namespace ProyectoFinal
+=======
+namespace Facturas_TPFinal_C
+>>>>>>> origin/master:Clases/clsCheque.cs
 {
 	public class clsCheque
 	{
@@ -50,6 +54,7 @@ namespace ProyectoFinal
 			set{this.moneda=value;}
 			get{return this.moneda;}
 		}
+<<<<<<< HEAD:App_Code/clsCheque.cs
 		
 		public int Tamaño //tamaño del registro Persona
   		{
@@ -57,5 +62,14 @@ namespace ProyectoFinal
     		get { return 4 + FechaEmision.Length*2 + 16 + Moneda.Length*2 ; }
   		}
   		
+=======
+		/*
+		public int Tamaño //tamaño del registro Persona
+  		{
+    		// Longitud en bytes de los atributos (un long = 8 bytes)
+    		get { return 4 + FechaEmision.Length*2 + FechaCobro.Length*2 + Tipo.Length*2 + Modo.Length*2 ; }
+  		}
+  		*/
+>>>>>>> origin/master:Clases/clsCheque.cs
 	}
 }
