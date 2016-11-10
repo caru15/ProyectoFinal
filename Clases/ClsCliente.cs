@@ -1,18 +1,15 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: Juan Morales
- * Date: 3/11/2016
- * Time: 10:41 p. m.
+ * User: JORGE
+ * Date: 9/11/2016
+ * Time: 1:36 p. m.
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
 
-namespace proyFinal
+namespace Facturas_TPFinal_C
 {
-	/// <summary>
-	/// Description of clsCliente.
-	/// </summary>
 	public class clsCliente
 	{
 		
@@ -23,6 +20,18 @@ namespace proyFinal
 		private long telefono;
 		private String cuenta;
 		private String email;
+		
+		public clsCliente()
+		{
+			this.Nombre=nn;
+			this.Apellido=nn;
+			this.Dni=0;
+			this.Domicilio=nn;
+			this.Telefono=0;
+			this.Cuenta=nn;
+			this.Email=nn;
+		}
+		
 		
 		public clsCliente(String nom, String ape, long doc, String dom, long tel, String cuen, String mail)
 		{
@@ -70,6 +79,12 @@ namespace proyFinal
 			get{return this.email;}
 		}
 		
-		
+		/*
+		public int Tamaño //tamaño del registro Persona
+  		{
+    		// Longitud en bytes de los atributos (un long = 8 bytes)
+    		get { return 4 + FechaEmision.Length*2 + FechaCobro.Length*2 + Tipo.Length*2 + Modo.Length*2 ; }
+  		}
+  		*/
 	}
 }
