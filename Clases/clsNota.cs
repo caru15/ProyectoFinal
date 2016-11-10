@@ -1,18 +1,15 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: Juan Morales
- * Date: 3/11/2016
- * Time: 10:40 p. m.
+ * User: JORGE
+ * Date: 9/11/2016
+ * Time: 1:37 p. m.
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
 
-namespace proyFinal
+namespace Facturas_TPFinal_C
 {
-	/// <summary>
-	/// Description of clsNota.
-	/// </summary>
 	public class clsNota
 	{
 		//NATIVE
@@ -21,17 +18,15 @@ namespace proyFinal
 		private String tipo;
 		private float monto;
 		private DateTime fecha;
-        private int IdFactura;
 		
 		//CONSTRUCTOR
 		
-		public clsNota(int id, String tip, float mon, DateTime fec,int If)
+		public clsNota(int id, String tip, float mon, DateTime fec)
 		{
 			this.IdNota=id;
 			this.Tipo=tip;
 			this.Monto=mon;
 			this.Fecha=fec;
-            IdFactura = If;
 		}
 		
 		//PROPERTIES
@@ -55,12 +50,14 @@ namespace proyFinal
 			set{this.fecha=value;}
 			get{return this.fecha;}
 		}
-
-        public int IdFactu
-        {
-            get { return IdFactura; }
-            set { IdFactura = value; }
-        }
+		
+		/*
+		public int Tamaño //tamaño del registro Persona
+  		{
+    		// Longitud en bytes de los atributos (un long = 8 bytes)
+    		get { return 4 + FechaEmision.Length*2 + FechaCobro.Length*2 + Tipo.Length*2 + Modo.Length*2 ; }
+  		}
+  		*/
 		
 	}
 }
