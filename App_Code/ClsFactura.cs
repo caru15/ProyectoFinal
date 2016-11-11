@@ -1,6 +1,6 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: JORGE
+
  * Date: 9/11/2016
  * Time: 1:35 p. m.
  * 
@@ -13,46 +13,22 @@ namespace ProyectoFinal
 	public class clsFactura
 	{
 		
-		//NATIVE
+		
 		
 		private int idFactura;
-		//private DateTime fechaEmision;
-		private string fechaEmision;
-    	//private DateTime fechaCobro;
-    	private string fechaCobro;
-		//public String[] tipo;
+		private DateTime fechaEmision;
+    	private DateTime fechaCobro;
 		private string tipo;
 		private string modo;
-		private clsCliente cliente =new clsCliente();
-		private clsNota nota = new clsNota();
-		private clsCheque cheque = new clsCheque();
+        private int IdCliente;
+        private int IdNota;
+        private int IdCheque;
 		
 		//CONSTRUCTOR
 		
-		public clsFactura(int idFact, string fEmision, string fCobro , string tip, string mod)
-		{
-			this.IdFactura = idFact;
-			this.FechaEmision = fEmision;
-			this.FechaCobro = fCobro;
-			//this.tipo = new string[50];
-			this.Tipo = tip;
-			this.Modo = mod;
-			
-		}
 		
-		public clsFactura(int idFact, string fEmision, string fCobro , string tip, string mod ,clsCliente cli)
-		{
-			this.IdFactura = idFact;
-			this.FechaEmision = fEmision;
-			this.FechaCobro = fCobro;
-			//this.tipo = new string[50];
-			this.Tipo = tip;
-			this.Modo = mod;
-			this.Cliente= cli;
-			
-		}
 		
-		public clsFactura(int idFact, string fEmision, string fCobro , string tip, string mod ,clsCliente cli , clsNota not)
+		public clsFactura(int idFact, DateTime fEmision, DateTime fCobro , string tip, string mod ,int cli , int not , int cheq)
 		{
 			this.IdFactura = idFact;
 			this.FechaEmision = fEmision;
@@ -60,22 +36,9 @@ namespace ProyectoFinal
 			//this.tipo = new string[50];
 			this.Tipo = tip;
 			this.Modo = mod;
-			this.Cliente= cli;
-			this.Nota = not ;
-			
-		}
-		
-		public clsFactura(int idFact, string fEmision, string fCobro , string tip, string mod ,clsCliente cli , clsNota not , clsCheque cheq)
-		{
-			this.IdFactura = idFact;
-			this.FechaEmision = fEmision;
-			this.FechaCobro = fCobro;
-			//this.tipo = new string[50];
-			this.Tipo = tip;
-			this.Modo = mod;
-			this.Cliente= cli;
-			this.Nota = not ;
-			this.Cheque = cheq;
+			this.IdCliente= cli;
+			this.IdNota = not ;
+			this.IdCheque = cheq;
 			
 		}
 		
@@ -86,12 +49,12 @@ namespace ProyectoFinal
 			set{idFactura=value;}
 		}
 		
-		public string FechaEmision{
+		public DateTime FechaEmision{
 			get{return fechaEmision;}
 			set{fechaEmision=value;}
 		}
 		
-		public string FechaCobro{
+		public DateTime FechaCobro{
 			get{return fechaCobro;}
 			set{fechaCobro=value;}
 		}
@@ -106,25 +69,25 @@ namespace ProyectoFinal
 			set{modo=value;}
 		}
 		
-		public clsCliente Cliente{
-        	get{return cliente;}
-        	set{cliente=value;}
+		public int Cliente{
+        	get{return IdCliente;}
+        	set{IdCliente=value;}
         }
 		
-		public clsNota Nota{
-        	get{return nota;}
-        	set{nota=value;}
+		public int Nota{
+        	get{return IdNota;}
+        	set{IdNota=value;}
         }
 		
-		public clsCheque Cheque{
-        	get{return cheque;}
-        	set{cheque=value;}
+		public int Cheque{
+        	get{return IdCheque;}
+        	set{IdCheque=value;}
         }
 		
 		public int Tamaño //tamaño del registro Persona
   		{
     		// Longitud en bytes de los atributos (un long = 8 bytes)
-    		get { return 4 + FechaEmision.Length*2 + FechaCobro.Length*2 + Tipo.Length*2 + Modo.Length*2 + Cliente.Tamaño + Nota.Tamaño + Cheque.Tamaño ; }
+    		get { return (4 + 8 +8 + Tipo.Length*2 + Modo.Length*2 + 8 +8 + 8) ; }
   		}
 		
 	}

@@ -8,11 +8,7 @@
  */
 using System;
 
-<<<<<<< HEAD:App_Code/clsNota.cs
 namespace ProyectoFinal
-=======
-namespace Facturas_TPFinal_C
->>>>>>> origin/master:Clases/clsNota.cs
 {
 	public class clsNota
 	{
@@ -20,7 +16,6 @@ namespace Facturas_TPFinal_C
 		
 		private int idNota;
 		private String tipo;
-<<<<<<< HEAD:App_Code/clsNota.cs
 		private double monto;
 		//private DateTime fecha;
 		private String fecha;
@@ -32,14 +27,6 @@ namespace Facturas_TPFinal_C
 		}
 		
 		public clsNota(int id, String tip, double mon, string fec)
-=======
-		private float monto;
-		private DateTime fecha;
-		
-		//CONSTRUCTOR
-		
-		public clsNota(int id, String tip, float mon, DateTime fec)
->>>>>>> origin/master:Clases/clsNota.cs
 		{
 			this.IdNota=id;
 			this.Tipo=tip;
@@ -69,7 +56,6 @@ namespace Facturas_TPFinal_C
 			get{return this.fecha;}
 		}
 		
-<<<<<<< HEAD:App_Code/clsNota.cs
 		
 		public int Tamaño //tamaño del registro Persona
   		{
@@ -77,15 +63,6 @@ namespace Facturas_TPFinal_C
     		get { return 4 + Tipo.Length*2 + 16 + Fecha.Length *2 ; }
   		}
   		
-=======
-		/*
-		public int Tamaño //tamaño del registro Persona
-  		{
-    		// Longitud en bytes de los atributos (un long = 8 bytes)
-    		get { return 4 + FechaEmision.Length*2 + FechaCobro.Length*2 + Tipo.Length*2 + Modo.Length*2 ; }
-  		}
-  		*/
->>>>>>> origin/master:Clases/clsNota.cs
 		
 	}
 }
