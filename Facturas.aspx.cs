@@ -20,8 +20,8 @@ public partial class Facturas : System.Web.UI.Page
 
     protected void Unnamed14_Click(object sender, EventArgs e)
     {
-        ListaFacturas lista = new ListaFacturas("facturas.bin");
-       // clsFactura obj = new clsFactura(ComboCliente.Text, FechaEmi.Text, FechaCobro.Text, ComboFactura.Text, ComboModo.Text, ComboCliente.Text, Notas.Text,);
-       // lista.agregarRegistro();
+        ListaFacturas lista = new ListaFacturas("c://facturas.bin");
+        clsFactura obj = new clsFactura(1, Convert.ToDateTime(FechaEmi.Text), Convert.ToDateTime(FechaCobro.Text), "Propia", ComboModo.Text, 1, 1,1);
+        lista.EscribirRegistro(1,obj);
     }
 }

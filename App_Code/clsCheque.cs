@@ -17,17 +17,19 @@ namespace ProyectoFinal
 		private DateTime fechaEmision;
 		private double monto;
 		private String moneda;
+        private bool estado; //true si el cheque activo y false si el cheque est inactivo
 		
 		public clsCheque()
 		{
 		}
 		
-		public clsCheque(int id, DateTime fEmision, double mont, String mone)
+		public clsCheque(int id, DateTime fEmision, double mont, String mone, bool es)
 		{
 			this.IdCheque=id;
 			this.FechaEmision=fEmision;
 			this.Monto=mont;
 			this.Moneda=mone;
+            this.estado = true;
 		}
 		
 		public int IdCheque{
@@ -49,11 +51,17 @@ namespace ProyectoFinal
 			set{this.moneda=value;}
 			get{return this.moneda;}
 		}
+
+        public bool Esta
+        {
+            set { estado = value; }
+            get { return estado; }
+        }
 		
 		public int Tamaño //tamaño del registro Persona
   		{
     		// Longitud en bytes de los atributos (un long = 8 bytes)
-    		get { return (4 + 8 + 16 + Moneda.Length*2) ; }
+    		get { return (4 + 8 + 16 + Moneda.Length*2 +1) ; }
   		}
   		
 	}

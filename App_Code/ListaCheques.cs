@@ -42,6 +42,7 @@ public class ListaCheques
                 bw.Write(obj.FechaEmision.ToString());
                 bw.Write(obj.Monto);
                 bw.Write(obj.Moneda);
+                bw.Write(obj.Esta);
                 CerrarFichero();
                 return true;
             }
@@ -79,8 +80,9 @@ public class ListaCheques
             string fechaemisioncheque = br.ReadString();
             double montoCheque = br.ReadDouble();
             string moneda = br.ReadString();
+            bool estado = br.ReadBoolean();
 
-            return (new clsCheque(idcheque, Convert.ToDateTime(fechaemisioncheque), montoCheque, moneda));
+            return (new clsCheque(idcheque, Convert.ToDateTime(fechaemisioncheque), montoCheque, moneda,estado));
         }
         else
         {
@@ -115,68 +117,50 @@ public class ListaCheques
     //elimina cheque pasando numero de id
     public void EliminarCheque(int idche,string fichero) {
 
+        int regi=0,regist = 0;
         int pos = BuscarCheque(idche);
         fst = new FileStream("Tempo.bin", FileMode.OpenOrCreate, FileAccess.ReadWrite);
         bwt = new BinaryWriter(fst);
         brt = new BinaryReader(fst);
-        clsCheque cheque1;
+        while (regi < nregs)
+        {
+            if (regist != pos)
+            {
+                clsCheque cheque1 = LeerReg(regist);
+                bwt.BaseStream.Seek(regi * tamañoReg, SeekOrigin.Begin);
+                bwt.Write(cheque1.IdCheque);
+                bwt.Write(cheque1.FechaEmision.ToString());
+                bwt.Write(cheque1.Monto);
+                bwt.Write(cheque1.Moneda);
+                bwt.Write(cheque1.Esta);
+                regist++; regi++;
+            }
+            else
+            {
+                regist++;
+                clsCheque cheque1 = LeerReg(regist);
+                bwt.BaseStream.Seek(regi * tamañoReg, SeekOrigin.Begin);
+                bwt.Write(cheque1.IdCheque);
+                bwt.Write(cheque1.FechaEmision.ToString());
+                bwt.Write(cheque1.Monto);
+                bwt.Write(cheque1.Moneda);
+                bwt.Write(cheque1.Esta);
+                regist++; regi++;
+            }
+        }
+            nregs--;
+            CerrarFichero();
+            fst.Close();
+            bwt.Close();
+            brt.Close();
+            File.Delete(fichero);
+            File.Move("Tempo.bin", fichero);
+        abrirFichero(fichero);
+        }
 
+    public void AnularCheque(int idcheque) {
+        int pos = BuscarCheque(idcheque);
+        clsCheque cheque1 = LeerReg(pos);
+        if (cheque1.Esta) { cheque1.Esta = false; }
     }
 }
-
-/* public void EliminarEmail(int i,string fichero){
-
-string opcion;
-int pos, j;
-
-ClsEmail eliminado = new ClsEmail();
- 	
- 	if (i>=0 && i<=nEmail){
- 		eliminado=LeerEmail(i);//eliminado es mi objeto Email a eliminar
-Console.WriteLine("El email a eliminar es :");
- 	    Console.WriteLine(eliminado.Dir_Remitente);
-		Console.WriteLine(eliminado.Dir_Destinatario);
-		Console.WriteLine(eliminado.Cuerpo);
-		Console.WriteLine(eliminado.Fecha);
-		Console.WriteLine(eliminado.Leido);
-		Console.Write("DESEA ELIMINARLO S/N:");
-		opcion=Console.ReadLine();
-		if (opcion=="s" || opcion=="S"){
-	      fst = new FileStream("F:\\temp.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-bwt = new BinaryWriter(fs);
-brt = new BinaryReader(fs);
-pos=j=0;
-          	while(pos<=nEmail){
-            if (pos!=i){//aqui leo el primero del fichero y lo pongo en el temporal
-          		        br.BaseStream.Seek(pos* tamañoEmail, SeekOrigin.Begin);
- 		                string dirRemitente = br.ReadString();
-string dirDestinatario = br.ReadString();
-string asunto = br.ReadString();
-string cuerpo = br.ReadString();
-string fecha = br.ReadString();
-bool estado = br.ReadBoolean();
-bwt.BaseStream.Seek(j* tamañoEmail, SeekOrigin.Begin);
-					
-					    bwt.Write(dirRemitente);
-					    bwt.Write(dirDestinatario);
-					    bwt.Write(asunto);
-					    bwt.Write(cuerpo);
-					    bwt.Write(fecha);
-					    bwt.Write(estado);
-					    pos++;
-					    j++;
-          	}else{pos++;}}
-             Cerrar();
-bwt.Close();
-             brt.Close();
-             fst.Close();
-			File.Delete(fichero);
-			File.Move("tmp.txt",fichero);
-			fs= new FileStream(fichero, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-bw = new BinaryWriter(fs);
-br = new BinaryReader(fs);
-		}else {Console.WriteLine("No se elimino nada ");}
- 	}
- 	
- }
-	}*/

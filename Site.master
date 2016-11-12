@@ -97,7 +97,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> Programacio web en C#</p>
+                <p> <%: DateTime.Now.Year %> Programacio web en C#</p>
             </footer>
         </div>
     </form>

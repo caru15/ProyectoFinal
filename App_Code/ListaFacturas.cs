@@ -1,5 +1,6 @@
 ﻿using System;
 using ProyectoFinal;
+using System.Windows;
 
 namespace ProyectoFinal
 {
@@ -38,8 +39,10 @@ namespace ProyectoFinal
 
 		public void agregarRegistro(clsFactura obj)
         {
-			if(EscribirRegistro(nregs,obj)){
-				nregs++;}
+            if (EscribirRegistro(nregs,obj)){
+				nregs=nregs+1;
+                Console.Write("Entro");
+            }
 		}
 		
 		public bool EscribirRegistro(int i,clsFactura obj){
@@ -52,6 +55,7 @@ namespace ProyectoFinal
 					bw.Write(obj.FechaCobro.ToString());
 					bw.Write(obj.Tipo);
 					bw.Write(obj.Modo);
+                    
                     //estos son los id`s de cliente nota y cheques los gaurdo en el fichero
                     bw.Write(obj.Cliente);
                     bw.Write(obj.Nota);
