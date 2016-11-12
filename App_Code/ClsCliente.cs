@@ -1,39 +1,33 @@
-﻿/*
- * Created by SharpDevelop.
- * User: JORGE
- * Date: 9/11/2016
- * Time: 1:36 p. m.
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
+﻿
 using System;
 
 namespace ProyectoFinal
 {
 	public class clsCliente
 	{
-		
+        private int IdCliente;
 		private String nombre;
 		private String apellido;
 		private long dni;
 		private String domicilio;
 		private long telefono;
-		private String cuenta;
+		private int  cuenta;
 		private String email;
 		
 		public clsCliente()
 		{
 		}
 		
-		public clsCliente(String nom, String ape, long doc, String dom, long tel, String cuen, String mail)
+		public clsCliente(String nom, String ape, long doc, String dom, long tel, int cuen, String mail, int ic)
 		{
-			this.Nombre=nom;
-			this.Apellido=ape;
-			this.Dni=doc;
-			this.Domicilio=dom;
-			this.Telefono=tel;
-			this.Cuenta=cuen;
-			this.Email=mail;
+            this.IdCliente = ic;
+            this.nombre=nom;
+			this.apellido=ape;
+			this.dni=doc;
+			this.domicilio=dom;
+			this.telefono=tel;
+			this.cuenta=cuen;
+			this.email=mail;
 		}
 		
 		public String Nombre{
@@ -61,7 +55,7 @@ namespace ProyectoFinal
 			get{return this.telefono;}
 		}
 		
-		public String Cuenta{
+		public int Cuenta{
 			set{this.cuenta=value;}
 			get{return this.cuenta;}
 		}
@@ -69,12 +63,17 @@ namespace ProyectoFinal
 		public String Email{
 			set{this.email=value;}
 			get{return this.email;}
-		}		
+		}	
+        public int idcli
+        {
+            set { IdCliente = value; }
+            get { return IdCliente;  }
+        }	
 		
 		public int Tamaño //tamaño del registro Persona
   		{
     		// Longitud en bytes de los atributos (un long = 8 bytes)
-    		get { return Nombre.Length*2 + Apellido.Length*2 + 8 + Domicilio.Length*2 + 8 + Cuenta.Length*2 + Email.Length*2 ; }
+    		get { return Nombre.Length*2 + Apellido.Length*2 + 8 + Domicilio.Length*2 + 8 + 4 +4 + Email.Length*2 ; }
   		}
 		
 	}

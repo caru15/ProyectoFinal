@@ -40,9 +40,7 @@ namespace ProyectoFinal
 		public void agregarRegistro(clsFactura obj)
         {
             if (EscribirRegistro(nregs,obj)){
-				nregs=nregs+1;
-                Console.Write("Entro");
-            }
+                nregs = nregs + 1;}
 		}
 		
 		public bool EscribirRegistro(int i,clsFactura obj){
@@ -55,12 +53,11 @@ namespace ProyectoFinal
 					bw.Write(obj.FechaCobro.ToString());
 					bw.Write(obj.Tipo);
 					bw.Write(obj.Modo);
-                    
                     //estos son los id`s de cliente nota y cheques los gaurdo en el fichero
                     bw.Write(obj.Cliente);
                     bw.Write(obj.Nota);
 					bw.Write(obj.Cheque);
-					CerrarFichero();
+					
 					return true;
 				}
 			}
