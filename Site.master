@@ -63,7 +63,7 @@
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" runat="server" href="~/Contact">Cuenta <span class="caret"></span>
                                              </a>
                               <ul class="dropdown-menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cliente</a></li>
+                                <li role="presentation"><a role="menuitem" runat="server" href="~/ABMClientes">Clientes</a></li>
                                 <li><a runat="server" href="Proveedor">Proveedor</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#">Producto/Servicios</a></li>
@@ -97,7 +97,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p> <%: DateTime.Now.Year %> Programacio web en C#</p>
+               
             </footer>
         </div>
     </form>
