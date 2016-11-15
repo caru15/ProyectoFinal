@@ -21,10 +21,11 @@ public class ListaClientes
     public void AbrirFichero(string fi)
     {
         if (Directory.Exists(fi))
-            throw new IOException(Path.GetFileName(fi) + " no es un fichero");
-        fs = new FileStream(fi, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-        bw = new BinaryWriter(fs);
-        br = new BinaryReader(fs);
+            throw new IOException(Path.GetFileName(fi) + " no es un fichero.");
+        this.fs = new FileStream(fi, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        this.bw = new BinaryWriter(fs);
+        this.br = new BinaryReader(fs);
+        this.nregs = (int)Math.Ceiling((double)fs.Length / (double)this.tamañoReg);
     }
     public void CerrarFichero() { fs.Close(); bw.Close(); br.Close(); }
 
@@ -34,9 +35,12 @@ public class ListaClientes
         {
             if (i >= 0 && i <= nregs)
             {
-                if (obj.Tamaño + 4 < tamañoReg)
+                if (obj.Tamaño + 4 > tamañoReg) {
+                    Console.WriteLine("Tamaño de registro excedido.");
+                    return false;
+                }else
                 {
-                    bw.BaseStream.Seek(i * tamañoReg, SeekOrigin.Begin);
+                    bw.BaseStream.Seek(i * this.tamañoReg, SeekOrigin.Begin);
                     bw.Write(obj.idcli);
                     bw.Write(obj.Nombre);
                     bw.Write(obj.Apellido);
@@ -48,29 +52,33 @@ public class ListaClientes
                     return true;
                 }
             }
-            return false;
+           else { return false; }
         }
         catch (IOException e) { CerrarFichero(); Console.WriteLine(e.Message); return false; }
     }
 
     public void AgregarRegistro(clsCliente cli)
     {
-        if (EscribirRegistro(nregs, cli))
-        {
+        if (EscribirRegistro(this.nregs, cli))
             this.nregs++;
-        }
     }
-    public clsCliente LeerRegistro(int i)//lee registro mandandole la posicion
+
+    public int NumReg()
+    {
+        return this.nregs;
+    }
+
+    public clsCliente LeerRegistro(int i)//lee registro mandandole la posicion en el fichero
     {
         try
         {
-            if (i >= 0 && i <= nregs)
+            if (i >= 0 && i < NumReg())
             {
-                br.BaseStream.Seek(i * tamañoReg, SeekOrigin.Begin);
+                br.BaseStream.Seek(i * this.tamañoReg, SeekOrigin.Begin);
                 int idcliente = br.ReadInt32();
                 string nombre = br.ReadString();
                 string apellido = br.ReadString();
-                long dni = br.ReadInt16();
+                long dni = br.ReadInt64();
                 string domi = br.ReadString();
                 long tel = br.ReadInt16();
                 int cuenta = br.ReadInt32();

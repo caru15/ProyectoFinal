@@ -11,6 +11,7 @@ using ProyectoFinal;
 public partial class ABMClientes : System.Web.UI.Page
 {
     private ListaClientes lista;
+    private int numeroReg;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -21,6 +22,7 @@ public partial class ABMClientes : System.Web.UI.Page
         try
         {
             lista.AbrirFichero("C://cliente.bin");
+       
             int idcli = Convert.ToInt32(IdCliente.Text);
             string nom = Nombre.Text;
             string ape = Apellido.Text;
@@ -31,6 +33,7 @@ public partial class ABMClientes : System.Web.UI.Page
             string em = email.Text;
             clsCliente obj = new clsCliente(nom, ape, Dni, dom, tele, cue, em, idcli);
             lista.AgregarRegistro(obj);
+            //numeroReg = lista.NumReg();
             lista.CerrarFichero();
         }catch(IOException er) { }
         

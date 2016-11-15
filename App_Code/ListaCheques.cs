@@ -19,7 +19,7 @@ public class ListaCheques
         abrirFichero(fichero);
     }
 
-    public int Nregs
+    public int NumeroReg
     {
         get { return nregs; }
     }
@@ -33,26 +33,33 @@ public class ListaCheques
 
     public bool EscribirRegistro(int i, clsCheque obj)
     {
-        if (i >= 0 && i <= nregs)
+        try
         {
-            if (obj.Tamaño + 4 < tamañoReg)
+            if (i >= 0 && i <= NumeroReg)
             {
-                bw.BaseStream.Seek(i * tamañoReg, SeekOrigin.Begin);
-                bw.Write(obj.IdCheque);
-                bw.Write(obj.FechaEmision.ToString());
-                bw.Write(obj.Monto);
-                bw.Write(obj.Moneda);
-                bw.Write(obj.Esta);
-                CerrarFichero();
-                return true;
+                if (obj.Tamaño + 4 > tamañoReg)
+                {
+                    Console.WriteLine("Tamaño de registro excedido.");
+                    return false;
+                }
+                else
+                {
+                    bw.BaseStream.Seek(i * tamañoReg, SeekOrigin.Begin);
+                    bw.Write(obj.IdCheque);
+                    bw.Write(obj.FechaEmision.ToString());
+                    bw.Write(obj.Monto);
+                    bw.Write(obj.Moneda);
+                    bw.Write(obj.Esta);
+                   
+                    return true;
+                }
             }
-            else { Console.WriteLine("El tamaño del Registro es muy grande"); return false; }
+            else { return false; }
         }
-        else
-        {
-            return false;
-        }
+        catch (IOException e) { CerrarFichero(); Console.WriteLine(e.Message); return false; }
     }
+
+    
 
     public void abrirFichero(String path)
     {  
@@ -61,9 +68,6 @@ public class ListaCheques
         fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
         bw = new BinaryWriter(fs);
         br = new BinaryReader(fs);
-
-        // Como es casi seguro que el último registro no ocupe el
-        // tamaño fijado, utilizamos Ceiling para redondear por encima.
         nregs = (int)Math.Ceiling((double)fs.Length / (double)tamañoReg);
     }
 
@@ -73,7 +77,7 @@ public class ListaCheques
 
     public clsCheque LeerReg(int i)
     {
-        if (i >= 0 && i <= nregs)
+        if (i >= 0 && i < nregs)
         {
             br.BaseStream.Seek(i * tamañoReg, SeekOrigin.Begin);
             int idcheque = br.ReadInt32();

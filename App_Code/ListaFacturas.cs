@@ -32,39 +32,48 @@ namespace ProyectoFinal
 
         public void CerrarFichero() { bw.Close(); br.Close(); fs.Close(); }
 
-        public int Nregs
+        public int Registro
         {
 			get{return nregs;}
 		}
 
 		public void agregarRegistro(clsFactura obj)
         {
-            if (EscribirRegistro(nregs,obj)){
-                nregs = nregs + 1;}
+            if (EscribirRegistro(nregs, obj)) this.nregs++;
 		}
 		
-		public bool EscribirRegistro(int i,clsFactura obj){
-			if(i >= 0 && i <= nregs){
-				if(obj.Tamaño+4 < tamañoReg){
-					bw.BaseStream.Seek(i*tamañoReg,SeekOrigin.Begin);
-				
-					bw.Write(obj.IdFactura);
-					bw.Write(obj.FechaEmision.ToString());//lo mando al dato datetime a string para poder guardarlo en el fichero
-					bw.Write(obj.FechaCobro.ToString());
-					bw.Write(obj.Tipo);
-					bw.Write(obj.Modo);
-                    //estos son los id`s de cliente nota y cheques los gaurdo en el fichero
-                    bw.Write(obj.Cliente);
-                    bw.Write(obj.Nota);
-					bw.Write(obj.Cheque);
-					
-					return true;
-				}
-			}
-			return false;
-		}
-		
-  		public clsFactura LeerReg( int i )//lee registro mandandole la posicion
+		public bool EscribirRegistro(int i,clsFactura obj)
+        {
+            try
+            {
+                if (i >= 0 && i <= nregs)
+                {
+                    if (obj.Tamaño + 4 > tamañoReg)
+                    {
+                        Console.WriteLine("Tamaño de registro excedido.");
+                        return false;
+                    }
+                    else
+                    {
+                        bw.BaseStream.Seek(i * tamañoReg, SeekOrigin.Begin);
+                        bw.Write(obj.IdFactura);
+                        bw.Write(obj.FechaEmision.ToString());//lo mando al dato datetime a string para poder guardarlo en el fichero
+                        bw.Write(obj.FechaCobro.ToString());
+                        bw.Write(obj.Tipo);
+                        bw.Write(obj.Modo);
+                        //estos son los id`s de cliente nota y cheques los gaurdo en el fichero
+                        bw.Write(obj.Cliente);
+                        bw.Write(obj.Nota);
+                        bw.Write(obj.Cheque);
+                        return true;
+                    }
+                }
+                else { return false; }
+            }
+            catch (IOException e) { CerrarFichero(); Console.WriteLine(e.Message); return false; }
+        }
+
+        public clsFactura LeerReg( int i )//lee registro mandandole la posicion
 		  { if (i >= 0 && i <= nregs)
             {
                 br.BaseStream.Seek(i * tamañoReg, SeekOrigin.Begin);
