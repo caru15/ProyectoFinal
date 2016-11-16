@@ -26,7 +26,7 @@ public partial class Facturas : System.Web.UI.Page
         lista.abrirFichero("c://facturas.bin");
         clsFactura obj = new clsFactura(1, Convert.ToDateTime(FechaEmi.Text), Convert.ToDateTime(FechaCobro.Text), "Propia", ComboModo.Text, 1, 1,1);
         lista.agregarRegistro(obj);
-        Notas.Text = Convert.ToString(lista.Nregs);
+        Notas.Text = Convert.ToString(lista.Registro);
         
     }
 }

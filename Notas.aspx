@@ -7,45 +7,37 @@
     </p>
 
     <div class="form-horizontal">
-        <h4>Crear Nuevo Proveedor.</h4>
+        <h4>Nueva Nota</h4>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="TipoNota" CssClass="col-md-2 control-label">Tipo Nota</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="TipoNota" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="TipoNota" CssClass="form-control" OnTextChanged="TipoNota_TextChanged" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="TipoNota"
-                    CssClass="text-danger" ErrorMessage="Se requiere el nombre de proveedor." />
+                    CssClass="text-danger" ErrorMessage="Se requiere el Tipo de Nota." />
             </div>
         </div>   
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Monto" CssClass="col-md-2 control-label">Monto</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Monto" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="Monto" CssClass="form-control" OnTextChanged="Monto_TextChanged" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Monto"
-                    CssClass="text-danger" ErrorMessage="Se requiere el número de cuenta" />
+                    CssClass="text-danger" ErrorMessage="Se requiere el Monto de la Nota" />
             </div>
         </div>   
-        <!--<div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Dom" CssClass="col-md-2 control-label">Domicilio</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Dom" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Dom"
-                    CssClass="text-danger" ErrorMessage="Se requiere domicilio" />
-            </div>
-        </div>  
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Mail" CssClass="col-md-2 control-label">Email</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Fecha" CssClass="col-md-2 control-label">Fecha</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Mail" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Mail"
-                    CssClass="text-danger" ErrorMessage="Se requiere un email válido." />
+                <asp:TextBox runat="server" ID="Fecha" CssClass="form-control" OnTextChanged="Fecha_TextChanged" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Fecha"
+                    CssClass="text-danger" ErrorMessage="Se requiere Fecha de Nota" />
             </div>
         </div> 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server"  Text="Registrar" CssClass="btn btn-small btn-success" />
+                <asp:Button runat="server"  Text="Registrar Nota" CssClass="btn btn-small btn-success" ID="btnRegistro" OnClick="Unnamed14_Click" OnClientClick="Registrar" />
             </div>
-        </div>-->
-    </div>
+        </div>
+      </div>
 </asp:Content>
